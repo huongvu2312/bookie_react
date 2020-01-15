@@ -54,7 +54,7 @@ class App extends Component {
             <Route path="/wishlist" component={WishlistBook} />
           </Switch>
         </div>
-        <Redirect exact from="/" to="/finishedBook" />
+        <Redirect exact from="/" to="/droppedBook" />
       </Router>
     );
   }

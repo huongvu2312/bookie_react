@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -277,12 +276,6 @@ export default class FinishedBook extends Component {
                             onClick={() => this.cancelEditRow()}
                           >
                             <i className="far fa-window-close"></i>
-                          </button>
-                          <button
-                            className="btn btn-dark"
-                            onClick={() => this.deleteRow(row.id)}
-                          >
-                            Delete
                           </button>
                         </div>
                       );
