@@ -1,85 +1,88 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import axios from "axios";
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
-    this.onChangePersonName = this.onChangePersonName.bind(this);
-    this.onChangeBusinessName = this.onChangeBusinessName.bind(this);
-    this.onChangeGstNumber = this.onChangeGstNumber.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      person_name: "",
-      business_name: "",
-      business_gst_number: ""
+      username: "",
+      password: "",
+      users: []
     };
+
+    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
-  onChangePersonName(e) {
-    this.setState({
-      person_name: e.target.value
+
+  // Set users database
+  componentDidMount() {
+    axios.get(`http://localhost:3000/users`).then(res => {
+      const users = res.data;
+      this.setState({ users });
     });
   }
-  onChangeBusinessName(e) {
-    this.setState({
-      business_name: e.target.value
-    });
+
+  // Set username value
+  onChangeUsername(event) {
+    this.setState({ username: event.target.value });
   }
-  onChangeGstNumber(e) {
-    this.setState({
-      business_gst_number: e.target.value
-    });
+
+  // Set password value
+  onChangePassword(event) {
+    this.setState({ password: event.target.value });
   }
 
   onSubmit(e) {
+    for (let user of this.state.users) {
+      if (
+        user.username === this.state.username &&
+        user.pass === this.state.password
+      ) {
+        // go to home page
+        this.props.history.push("/index");
+      } else {
+        alert("Hey your username or password is wrong");
+      }
+    }
+
     e.preventDefault();
-    console.log(
-      `The values are ${this.state.person_name}, ${this.state.business_name}, and ${this.state.business_gst_number}`
-    );
-    this.setState({
-      person_name: "",
-      business_name: "",
-      business_gst_number: ""
-    });
   }
 
   render() {
     return (
       <div style={{ marginTop: 10 }}>
-        <h3>Add New Business</h3>
+        <h3>Login</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label>Person Name: </label>
+            <label>Username: </label>
             <input
               type="text"
               className="form-control"
-              value={this.state.person_name}
-              onChange={this.onChangePersonName}
+              value={this.state.username}
+              onChange={this.onChangeUsername}
+              required
             />
           </div>
           <div className="form-group">
-            <label>Business Name: </label>
+            <label>Password: </label>
             <input
-              type="text"
+              type="password"
               className="form-control"
-              value={this.state.business_name}
-              onChange={this.onChangeBusinessName}
+              value={this.state.password}
+              onChange={this.onChangePassword}
+              required
             />
           </div>
           <div className="form-group">
-            <label>GST Number: </label>
-            <input
-              type="text"
-              className="form-control"
-              value={this.state.business_gst_number}
-              onChange={this.onChangeGstNumber}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="submit"
-              value="Register Business"
-              className="btn btn-primary"
-            />
+            <button type="submit" className="btn btn-primary">
+              Login
+            </button>
+            <Link to={"/register"} className="btn btn-link">
+              Register
+            </Link>
           </div>
         </form>
       </div>
