@@ -6,7 +6,7 @@
         "node": true
     },
     "extends": [
-        "standard",
+        // "standard"
         "prettier"
     ],
     "globals": {
@@ -23,7 +23,8 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "prettier"
     ],
     "rules": {
         "no-const-assign": "warn",
@@ -33,6 +34,7 @@
         "no-unused-vars": "warn",
         "constructor-super": "warn",
         "valid-typeof": "warn",
-        "no-extra-semi": "error"
+        "no-extra-semi": "error",
+        "prettier/prettier": ["error"]
     }
 }
