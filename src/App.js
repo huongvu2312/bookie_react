@@ -1,49 +1,52 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Redirect } from "react-router";
 
 import Login from "./components/login.component";
 import Register from "./components/register.component";
+import Header from "./components/header.component";
+import Header2 from "./components/header2.component";
+import Home from "./components/home.component";
 
 import "./App.css";
 
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = { isLogin: false };
+    this.setIsLoginValue = this.setIsLoginValue.bind(this);
+  }
+
+  setIsLoginValue(il) {
+    this.setState({ isLogin: il });
   }
 
   render() {
+    const isLogin = this.state.isLogin;
+    let header;
+    if (isLogin) {
+      header = <Header2 logOuts={this.setIsLoginValue} />;
+    } else {
+      header = <Header />;
+    }
     return (
       <Router>
         <div className="container">
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to={"/login"} className="navbar-brand">
-              Bookie
-            </Link>
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            >
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  <Link to={"/login"} className="nav-link">
-                    Login
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to={"/register"} className="nav-link">
-                    Register
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </nav>{" "}
+          {header}
           <br />
           <Switch>
-            <Route exact path="/login" component={Login} />
+            <Route
+              path="/login"
+              render={props => (
+                <Login {...props} getIsLoginValues={this.setIsLoginValue} />
+              )}
+            />
             <Route path="/register" component={Register} />
+            <Route path="/home" component={Home} />
           </Switch>
         </div>
+        <Redirect exact from="/" to="/login" />
       </Router>
     );
   }

@@ -36,16 +36,22 @@ export default class Login extends Component {
   }
 
   onSubmit(e) {
+    let foundUser = false;
     for (let user of this.state.users) {
       if (
-        user.username === this.state.username &&
-        user.pass === this.state.password
+        user.username == this.state.username &&
+        user.pass == this.state.password
       ) {
-        // go to home page
-        this.props.history.push("/index");
-      } else {
-        alert("Hey your username or password is wrong");
+        foundUser = true;
+        this.props.history.push("/home");
       }
+    }
+
+    // send isLogin value to App
+    this.props.getIsLoginValues(foundUser);
+
+    if (!foundUser) {
+      alert("Hey your username or password is wrong");
     }
 
     e.preventDefault();
