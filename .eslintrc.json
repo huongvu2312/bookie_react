@@ -6,7 +6,8 @@
         "node": true
     },
     "extends": [
-        "standard"
+        "standard",
+        "prettier"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -21,8 +22,8 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
-        //"@typescript-eslint"
+        "react",
+        "@typescript-eslint"
     ],
     "rules": {
         "no-const-assign": "warn",

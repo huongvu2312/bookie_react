@@ -27,17 +27,14 @@ class App extends Component {
       <Router>
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to={'/'} className="navbar-brand">Bookie</Link>
+            <Link to={'/login'} className="navbar-brand">Bookie</Link>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <Link to={'/'} className="nav-link">Home</Link>
+                  <Link to={'/login'} className="nav-link">Login</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={'/create'} className="nav-link">Create</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to={'/index'} className="nav-link">Index</Link>
+                  <Link to={'/register'} className="nav-link">Register</Link>
                 </li>
               </ul>
             </div>
