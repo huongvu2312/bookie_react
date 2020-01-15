@@ -130,7 +130,7 @@ export default class CurrentBook extends Component {
   }
 
   addRow() {
-    const newDroppedBook = {
+    const newCurrentBook = {
       id: this.state.currentBooks.length + 1,
       name: this.state.name,
       author: this.state.author,
@@ -138,7 +138,7 @@ export default class CurrentBook extends Component {
     };
 
     axios
-      .post(`http://localhost:3000/currentBooks`, newDroppedBook)
+      .post(`http://localhost:3000/currentBooks`, newCurrentBook)
       .then(() => {
         window.location.reload();
       });
@@ -174,7 +174,7 @@ export default class CurrentBook extends Component {
     axios.get(`http://localhost:3000/finishedBooks`).then(res => {
       const finishedBooks = res.data;
       var date = new Date();
-      const newDroppedBook = {
+      const newFinishedBook = {
         id: finishedBooks.length + 1,
         name: name,
         author: author,
@@ -184,7 +184,7 @@ export default class CurrentBook extends Component {
 
       // Add book to finishedBooks database
       axios
-        .post(`http://localhost:3000/finishedBooks`, newDroppedBook)
+        .post(`http://localhost:3000/finishedBooks`, newFinishedBook)
         .then(() => {
           // Delete book from currentBooks database
           axios
@@ -211,7 +211,7 @@ export default class CurrentBook extends Component {
   }
 
   saveEditRow() {
-    const updateDroppedBook = {
+    const updateCurrentBook = {
       id: this.state.editRowID,
       name: this.state.nameEdit,
       author: this.state.authorEdit,
@@ -221,7 +221,7 @@ export default class CurrentBook extends Component {
     axios
       .put(
         `http://localhost:3000/currentBooks/${this.state.editRowID}`,
-        updateDroppedBook
+        updateCurrentBook
       )
       .then(() => {
         window.location.reload();
