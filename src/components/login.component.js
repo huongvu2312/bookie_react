@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default class Login extends Component {
@@ -39,8 +39,8 @@ export default class Login extends Component {
     let foundUser = false;
     for (let user of this.state.users) {
       if (
-        user.username == this.state.username &&
-        user.pass == this.state.password
+        user.username === this.state.username &&
+        user.pass === this.state.password
       ) {
         foundUser = true;
         this.props.history.push("/home");

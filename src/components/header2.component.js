@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class Header2 extends Component {
   constructor(props) {
@@ -23,19 +23,29 @@ export default class Header2 extends Component {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link to={"/create"} className="nav-link">
-                Create
+              <Link to={"/finishedBook"} className="nav-link">
+                Finished Book
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={"/edit"} className="nav-link">
-                Edit
+              <Link to={"/droppedBook"} className="nav-link">
+                Dropped Book
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/currentBook"} className="nav-link">
+                Current Reading
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/wishlist"} className="nav-link">
+                Wishlist
               </Link>
             </li>
           </ul>
 
-          <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item">
+          <ul className="nav navbar-nav navbar-right">
+            <li className="nav-item">
               <Link to={"/login"} className="nav-link" onClick={this.logOut}>
                 Logout
               </Link>
