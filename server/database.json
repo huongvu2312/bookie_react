@@ -356,6 +356,13 @@
       "author": "3",
       "startDate": "1",
       "endDate": "1"
+    },
+    {
+      "id": 52,
+      "name": "1",
+      "author": "current1",
+      "startDate": "2020-01-15T22:20:23.222Z",
+      "endDate": "2020-01-15T22:31:58.615Z"
     }
   ],
   "droppedBooks": [
@@ -708,6 +715,13 @@
       "author": "Mr. Aniya Kilback",
       "startDate": "2019-03-28T22:22:35.133Z",
       "stopDate": "2020-01-15T16:49:04.113Z"
+    },
+    {
+      "id": 51,
+      "name": "1",
+      "author": "current2",
+      "startDate": "2020-01-15T22:19:27.697Z",
+      "stopDate": "2020-01-15T22:32:25.719Z"
     }
   ],
   "currentBooks": [
@@ -1028,18 +1042,6 @@
       "name": "1",
       "author": "drop",
       "startDate": "2020-01-15T22:19:22.688Z"
-    },
-    {
-      "id": 54,
-      "name": "1",
-      "author": "drop",
-      "startDate": "2020-01-15T22:19:27.697Z"
-    },
-    {
-      "id": 55,
-      "name": "1",
-      "author": "test",
-      "startDate": "2020-01-15T22:20:23.222Z"
     }
   ],
   "wishlistBooks": [
