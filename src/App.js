@@ -27,12 +27,13 @@ class App extends Component {
   }
 
   render() {
-    const isLogin = this.state.isLogin;
     let header;
-    if (isLogin) {
-      header = <Header2 logOuts={this.setIsLoginValue} />;
-    } else {
+    let url = window.location.pathname;
+    console.log(url);
+    if (url === "/login" || url === "/register") {
       header = <Header />;
+    } else {
+      header = <Header2 logOuts={this.setIsLoginValue} />;
     }
     return (
       <Router>
@@ -54,7 +55,6 @@ class App extends Component {
             <Route path="/wishlist" component={WishlistBook} />
           </Switch>
         </div>
-        <Redirect exact from="/" to="/login" />
       </Router>
     );
   }
