@@ -36,7 +36,7 @@ router.route('/:id').delete((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/update/:id').post((req, res) => {
+/*router.route('/update/:id').post((req, res) => {
     FinishedBook.findOne({ id: req.params.id })
         .then(FinishedBook => {
             FinishedBook.name = req.body.name;
@@ -49,10 +49,9 @@ router.route('/update/:id').post((req, res) => {
                 .catch(err => res.status(400).json('Error: ' + err));
         })
         .catch(err => res.status(400).json('Error: ' + err));
-});
+});*/
 
-/*router.route('/update/:id').post((req, res) => {
-    console.log(req);
+router.route('/update/:id').post((req, res) => {
     FinishedBook.findOneAndUpdate(
         { id: req.params.id },
         {
@@ -63,6 +62,6 @@ router.route('/update/:id').post((req, res) => {
         })
         .then(() => res.json('FinishedBook updated!'))
         .catch(err => res.status(400).json('Error: ' + err));
-});*/
+});
 
 module.exports = router;
