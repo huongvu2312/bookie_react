@@ -1,4 +1,4 @@
-var faker = require('faker');
+var faker = require("faker");
 
 var database = {
   finishedBooks: [],
@@ -8,7 +8,7 @@ var database = {
   users: []
 };
 
-for (var i = 1; i<= 50; i++) {
+for (var i = 1; i <= 1000; i++) {
   database.finishedBooks.push({
     id: i,
     name: faker.lorem.words(),
@@ -41,10 +41,9 @@ for (var i = 1; i<= 50; i++) {
 
 database.users.push({
   id: 1,
-  username: 'vu',
-  pass: '2312',
-  email: 'vu@gmail.com'
+  username: "vu",
+  pass: "2312",
+  email: "vu@gmail.com"
 });
 
 console.log(JSON.stringify(database));
-

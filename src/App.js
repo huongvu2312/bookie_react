@@ -28,8 +28,7 @@ class App extends Component {
   render() {
     let header;
     let url = window.location.pathname;
-    console.log(url);
-    if (url === "/login" || url === "/register") {
+    if (url === "/login" || url === "/register" || url === "/") {
       header = <Header />;
     } else {
       header = <Header2 logOuts={this.setIsLoginValue} />;

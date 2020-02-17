@@ -66,3 +66,9 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+The "server" folder was created as test backend, data inside was generated automatically from Faker.js.
+It only served as a test database for the functions of JS frontend.
+"server" backend was ran by json server for test phase.
+
+The "backend" folder used MongoDB as its database and express.js as server. Cors package was used as a middleware.

@@ -19,7 +19,7 @@ export default class Login extends Component {
 
   // Set users database
   componentDidMount() {
-    axios.get(`http://localhost:3000/users`).then(res => {
+    axios.get(`http://localhost:5000/users`).then(res => {
       const users = res.data;
       this.setState({ users });
     });

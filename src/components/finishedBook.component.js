@@ -78,16 +78,12 @@ export default class FinishedBook extends Component {
     ];
     this.setState({ columns: header });
 
-    axios.get(`http://localhost:3000/finishedBooks`).then(res => {
-      const finishedBooks = res.data;
-      if (this._mounted) {
+    axios.get(`http://localhost:5000/finishedBooks`)
+      .then(res => {
+        const finishedBooks = res.data;
         this.setState({ finishedBooks });
-      }
-    });
-  }
-
-  componentWillUnmount() {
-    this._mounted = false;
+      })
+      .catch(err => console.log(err));
   }
 
   setPage(p) {
@@ -157,14 +153,14 @@ export default class FinishedBook extends Component {
     };
 
     axios
-      .post(`http://localhost:3000/finishedBooks`, newFinishedBook)
+      .post(`http://localhost:5000/finishedBooks/add`, newFinishedBook)
       .then(() => {
         window.location.reload();
       });
   }
 
   deleteRow(bookID) {
-    axios.delete(`http://localhost:3000/finishedBooks/${bookID}`).then(() => {
+    axios.delete(`http://localhost:5000/finishedBooks/${bookID}`).then(() => {
       window.location.reload();
     });
   }
@@ -195,13 +191,20 @@ export default class FinishedBook extends Component {
     };
 
     axios
-      .put(
-        `http://localhost:3000/finishedBooks/${this.state.editRowID}`,
+      .post(
+        `http://localhost:5000/finishedBooks/update/${this.state.editRowID}`,
         updateFinishedBook
       )
-      .then(() => {
-        window.location.reload();
-      });
+      .then((res) => {
+        this.setState({ editRowID: 0 });
+        axios.get(`http://localhost:5000/finishedBooks`)
+          .then(res => {
+            const finishedBooks = res.data;
+            this.setState({ finishedBooks });
+          })
+          .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -258,11 +261,12 @@ export default class FinishedBook extends Component {
                   .slice(
                     this.state.page * this.state.rowsPerPage,
                     this.state.page * this.state.rowsPerPage +
-                      this.state.rowsPerPage
+                    this.state.rowsPerPage
                   )
                   .map(row => {
                     let action = "";
                     if (row.id === this.state.editRowID) {
+                      // show confirmed edit button
                       action = (
                         <div className="actions">
                           <button
@@ -280,6 +284,7 @@ export default class FinishedBook extends Component {
                         </div>
                       );
                     } else {
+                      // hide confirmed edit button
                       action = (
                         <div className="actions">
                           <button

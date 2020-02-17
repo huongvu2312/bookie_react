@@ -34,18 +34,21 @@ export default class Register extends Component {
   }
 
   onSubmit(e) {
+    e.preventDefault();
     const user = {
       username: this.state.username,
       pass: this.state.password,
       email: this.state.email
     };
 
-    axios.post(`http://localhost:3000/users`, user).then(() => {
-      // go to login page
-      this.props.history.push("/login");
-    });
-
-    e.preventDefault();
+    console.log(user);
+    axios.post(`http://localhost:5000/users/register`, user)
+      .then((res) => {
+        console.log(res.data)
+        // go to login page
+        this.props.history.push("/login");
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
