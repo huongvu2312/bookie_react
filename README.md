@@ -6,8 +6,8 @@ A book management application built with [React](https://github.com/facebook/rea
 
 ### Prerequisites
 
-* Node.js
-* MongoDB
+* [Node.js](https://nodejs.org/en/)
+* [MongoDB](https://www.mongodb.com/)
 
 ### Deploying
 
