@@ -1,6 +1,6 @@
 # Bookie - React
 
-A book management application built with [React](https://github.com/facebook/react)
+A book management application built with [React 16](https://github.com/facebook/react)
 
 ## Getting Started
 
